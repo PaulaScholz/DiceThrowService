@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiceThrowLogDemo", "DiceThrowLogDemo\DiceThrowLogDemo.csproj", "{475A8B73-B608-4255-B7A4-FFBDED58D5C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceThrowLibrary", "DiceThrowLibrary\DiceThrowLibrary.csproj", "{DC89C8CD-15F5-4E50-9C82-68AACEB2E6F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{475A8B73-B608-4255-B7A4-FFBDED58D5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{475A8B73-B608-4255-B7A4-FFBDED58D5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{475A8B73-B608-4255-B7A4-FFBDED58D5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{475A8B73-B608-4255-B7A4-FFBDED58D5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC89C8CD-15F5-4E50-9C82-68AACEB2E6F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC89C8CD-15F5-4E50-9C82-68AACEB2E6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC89C8CD-15F5-4E50-9C82-68AACEB2E6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC89C8CD-15F5-4E50-9C82-68AACEB2E6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF0303FA-F3FD-41B4-A7BE-004ED3204928}
+	EndGlobalSection
+EndGlobal
