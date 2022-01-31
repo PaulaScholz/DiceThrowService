@@ -103,8 +103,45 @@ The use of a separate object and thread allows the service's async `OnStart` met
             Session?.Source.Process();
         }
 ```
-
 The ETW Provider we are monitoring is a self-describing dynamic provider where its manifest is built into the ETW event itself. Thus, we use the TraceEvent library's `DynamicTraceEventParser` to decode the events.
+
+Each time an ETW event arrives from the provider, the `Source_AllEvents` method is called in `MonitorTask.cs` to echo the event to the parent class:
+```csharp
+        /// <summary>
+        /// Event handler to write the event data to the parent class.
+        /// </summary>
+        /// <param name="obj">The TraceEvent object from ETW</param>
+        private void Source_AllEvents(Microsoft.Diagnostics.Tracing.TraceEvent obj)
+        {
+
+            Parent?.WriteEvent(obj.ToString());
+        }
+```
+
+In the `DiceThrowMonitoringService` the `WriteEvent` method is called to echo the ETW event to the Windows Event Log and to Application Insights:
+```csharp
+        /// <summary>
+        /// Write an entry to the event log.  Called from a MonitorTask.
+        /// </summary>
+        /// <param name="text"></param>
+        public void WriteEvent(string text)
+        {
+
+            // Write all the events from the provider to the log. You could gate this
+            // with the AllEventsFlag if desired.
+            if (text.ToLower().Contains("error"))
+            {
+                EventLog.WriteEntry(text, EventLogEntryType.Error);
+            }
+            else
+            {
+                EventLog.WriteEntry(text);
+            }           
+
+            // send event to ApplicationInsights
+            ServiceTelemetryClient.TrackTrace(text);
+        }
+```
 
 ETW events from the provider will continue to be processed until the Windows service is stopped. Inside `DiceThrowMonitoringService.cs`, we override the `ServiceBase` OnStop() method:
 ```csharp
